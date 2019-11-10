@@ -1,0 +1,27 @@
+version: '3.4'
+services:
+  node:
+    image: 'node:12-alpine'
+    depends_on:
+      - db
+    networks:
+      - backend
+    volumes:
+      - type: bind
+        source: ./
+        target: /usr/src/app
+    environment:
+      NODE_ENV: 'production'
+      DEBUG: 'knex:*'
+      DB_URL: 'postgres://dev:dev@db:5432/dev'
+    command: 'node /usr/src/app/src/index'
+  db:
+    image: 'postgres:11-alpine'
+    networks:
+      - backend
+    environment:
+      POSTGRES_USER: dev
+      POSTGRES_PASSWORD: dev
+      POSTGRES_DB: dev
+networks:
+  backend: {}
