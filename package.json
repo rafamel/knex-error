@@ -13,7 +13,7 @@
   },
   "devDependencies": {},
   "dependencies": {
-    "knex": "^0.20.1",
+    "knex": "^2.4.0",
     "ms": "^2.1.2",
     "pg": "^7.12.1"
   }
